@@ -1,0 +1,10 @@
+﻿body {
+}
+#onboardsubmit {
+    width: fit-content;
+}
+
+#btn {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<HRMS.Models.OffBoardingCheckPoint>
+
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+    <head>
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="~/Scripts/onboarding.js" asp-append-version="true"></script>
+        <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+    <body>
+
+
+<div class="mt-4">
+ 
+  
+   
+     <div class="d-flex justify-content-start">
+ <form asp-controller="OffBoarding" asp-action="OffBoardDashboard" method="get" >
+          <div class="input-group">
+             <input type="text" name="SearchString" class="form-control" placeholder="Search from here." aria-label="Recipient's username" aria-describedby="button-addon2">
+             <input class="btn mr-2" type="submit" value="Search" id="button-addon2"/>
+             <label class="pt-2">Total Record :</label> <input class="form-control mr-2" id="totalrow" />
+              <a class="btn" asp-action="Admin" asp-controller="Admin" id="button-addon2">Return To AdminDashboard</a>
+          </div>
+          
+        @*label class="control-label">Total Record</label>
+        <input class="form-control" id="totalrow" />
+  *@
+ </form>
+     
+      </div>
+ </div>
+
+
+<table class="table" id="secondtable">
+    <thead>
+        <tr>
+            <th>
+                 @Html.CheckBox("IsRequired",false)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.offCheckPointName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BUnitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssigneeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+           
+            <th>
+                <a class=" btn btn-secondary" asp-action="OffBoardingCheckpoint" asp-controller="Admin" style="margin-left:19px;">
+                      <i class="fa fa-plus"></i>
+                 </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <input type="checkbox" id="checkbox"/>
+            
+            </td>
+            <td id="checkpoint">
+               
+                @Html.DisplayFor(modelItem => item.offCheckPointName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUnitName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssigneeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+          
+            <td>
+                <a class="btn btn-secondary" asp-action="AddOrEdit" asp-route-id="@item.offCheckPointId">
+                    <i class="fa fa-pencil"></i>
+                </a> 
+                <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@item.offCheckPointId">
+                    <i class="fa fa-trash"></i>
+                </a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

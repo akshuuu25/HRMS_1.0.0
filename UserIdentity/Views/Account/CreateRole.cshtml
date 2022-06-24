@@ -1,0 +1,58 @@
+﻿
+@model HRMS.Models.CreateRole
+
+@{
+    
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <script src="~/Scripts/register.js" asp-append-version="true"></script>
+         <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+    <body>
+     
+       <div class="row mb-2 mt-4">
+                 <div class="col-sm-4">
+
+                 </div>
+     <div class="col-sm-4">
+      <form asp-controller="Account" asp-action="CreateRole" method="post" style="margin-top=30px;"> 
+           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                     <div class="form-group">
+
+                         <label asp-for="Username" class="control-label">Select User<span style="color:red;">*</span></label>
+
+                      @Html.DropDownList("Username",(SelectList)ViewBag.users, "Select Users", new {@id="username", @class="form-control"})
+                     <span asp-validation-for="Username" class="text-danger"></span>
+
+                     </div>
+
+                       <div class="form-group">
+
+                         <label asp-for="Rolename" class="control-label">Select Roles<span style="color:red;">*</span></label>
+                        @Html.DropDownList("Rolename",(SelectList)ViewBag.roles, "Select Roles", new {@id="roles", @class="form-control"})
+                    
+                     <span asp-validation-for="Rolename" class="text-danger"></span>
+
+                     </div>
+
+                     <div class="form-group d-flex justify-content-center">
+                       <input type="submit" class="btn mr-2" id="submit" value="AssignRole" />
+                        <a class="btn" id="submit" asp-action="Admin" asp-controller="Admin">Return To AdminDashboard</a>
+                     </div>
+                 </form> 
+                 </div>
+        
+              
+                 <div class="col-sm-4">
+
+                 </div>
+             </div>
+    
+       
+         
+         
+   </body>
+  </html>

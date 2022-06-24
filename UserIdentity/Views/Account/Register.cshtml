@@ -1,0 +1,140 @@
+﻿@model HRMS.Models.Register
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+    <head>
+        <title>User Registration</title>
+        <link rel="stylesheet" href="~/css/register.css"/>
+          <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+        <script src="~/Scripts//register.js" asp-append-version=true></script>
+    </head>
+    <body>
+         <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+              <div class="row">
+                  <div class="col-sm-2"> 
+
+                  </div>
+
+                  <div class="col-sm-4">
+                      <div class="form-group">
+                          <label asp-for="FullName" class="control-label">FullName<span style="color:red;">*</span></label>
+            <input asp-for="FullName" class="form-control" id="username"/>
+            <span asp-validation-for="FullName" class="text-danger"></span>
+
+                      </div>
+
+                      <div class="form-group">
+                          <label asp-for="Gender" class="control-label">Select Gender<span style="color:red;">*</span></label><br />
+            
+              <input asp-for="Gender" type="radio" name="Gender" value="M" />Male
+              <input asp-for="Gender" type="radio" name="Gender" id="gender" value="F" />Female
+             <span asp-validation-for="Gender" class="text-danger"></span>
+                      </div>
+
+                      <div class="form-group">
+                          <label asp-for="CountryId" class="control-label" id="contryLable">Select Country<span style="color:red;">*</span></label>
+               @Html.HiddenFor(m => m.CountryId, new { @id = "countryId" })
+               @Html.DropDownListFor(x => x.CountryId, (SelectList)ViewBag.Countries, "Select Country", new { @id = "country" , @class="form-control"})
+            
+              <span asp-validation-for="CountryId" class="text-danger"></span>
+         
+                 </div>
+                  
+                      <div class="form-group">
+                          <label asp-for="StateId" class="control-label">Select State<span style="color:red;">*</span></label>
+                @Html.HiddenFor(m => m.StateId, new { @id = "stateId" })
+                 @Html.DropDownListFor(x => x.StateId,Enumerable.Empty<SelectListItem>(),"Select State", new { @id = "state" , @class="form-control"})
+    
+              <span asp-validation-for="StateId" class="text-danger"></span>
+                      </div>
+
+                      <div class="form-group">
+                          <label asp-for="CityId" class="control-label">Select City<span style="color:red;">*</span></label>
+                @Html.HiddenFor(m => m.CityId, new { @id = "cityId" })
+                @Html.DropDownListFor(x => x.CityId, Enumerable.Empty<SelectListItem>(), "Select City", new { @id = "city" , @class="form-control"})
+         
+               <span asp-validation-for="CityId" class="text-danger"></span>
+
+                      </div>
+
+                  </div>
+
+                  <div class="col-sm-4">
+
+                      <div class="form-group">
+                          <label asp-for="PostalId" class="control-label">Select Your PostalCode<span style="color:red;">*</span></label>
+                        @Html.HiddenFor(m => m.PostalId, new { @id = "postalId" })
+                         @Html.DropDownListFor(x => x.PostalId, Enumerable.Empty<SelectListItem>(), "Select PostalCode", new { @id = "pcode" , @class="form-control"})
+           
+                        <span asp-validation-for="PostalId" class="text-danger"></span>
+       
+                      </div>
+
+                      <div class="form-group">
+                          <label asp-for="Address" class="control-label">Address<span style="color:red;">*</span></label>
+                       <input asp-for="Address"  class="form-control"  id="address" />
+
+
+                        <span asp-validation-for="Address" class="text-danger"></span>
+
+                      </div>
+
+                      <div class="form-group">
+                          <label asp-for="Email" class="control-label">Email<span style="color:red;">*</span></label>
+                        <input asp-for="Email" class="form-control" id="email"/>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                      
+                      </div>
+
+                      
+                      <div class="form-group">
+                          <label asp-for="Password" class="control-label">Password<span style="color:red;">*</span></label>
+                        <input asp-for="Password" class="form-control" id="password"/>
+                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                      </div>
+
+                      
+                      <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label">ConfirmPassword<span style="color:red;">*</span></label>
+                        <input asp-for="ConfirmPassword" class="form-control" id="confirmPassword"/>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+              
+                      </div>
+
+                  </div>
+
+                  <div class="col-sm-2">
+
+                  </div>
+                  </div>
+             
+                  <div class="row">
+                    <div class="col-sm-2">
+           
+                     </div>
+             
+                     <div class="col-sm-8 form-group" id="btn">
+                         <button type="submit" class="form-control btn mr-2" value="submit" id="btnSubmit"> Register </button>
+                         <a class="btn" id="btnSubmit" asp-action="Index" asp-controller="Home">Return To Dashboard</a>
+           
+                   </div>
+
+                    <div class="col-sm-2">
+
+                    </div>
+            
+       
+    
+
+              </div>
+          </form>
+    </body>
+  </html>

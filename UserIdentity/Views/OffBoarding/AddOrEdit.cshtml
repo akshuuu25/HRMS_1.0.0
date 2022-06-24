@@ -1,0 +1,76 @@
+﻿@model HRMS.Models.OffBoardingCheckPoint
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+
+    <head>
+        <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+  <body>
+
+
+  
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+     
+       <form asp-action="AddOrEdit" method="post">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="offCheckPointId" />
+            <div class="form-group">
+                <label asp-for="offCheckPointName" class="control-label"></label>
+                <input asp-for="offCheckPointName" class="form-control" id="CheckPointName"/>
+                <span asp-validation-for="offCheckPointName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BUnitId" class="control-label">Select BusinessUnit</label>
+                           <select asp-for="BUnitId" id="bunit" class="form-control" asp-items="@ViewBag.businessUnit"> 
+                              <option>Select BusinessUnit</option>
+                           </select>
+                          <span asp-validation-for="BUnitId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                 <label asp-for="DeptID" class="control-label">Select Department</label>
+                          
+                      
+                        <select asp-for="DeptID"  id="dept" class="form-control" asp-items="@ViewBag.department"> 
+                              <option>Select Department</option>
+                           </select>
+                           <span asp-validation-for="DeptID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AssigneeId" class="control-label">Select Department</label>
+                         
+                      
+                          <select asp-for="AssigneeId"  id="dept" class="form-control" asp-items="@ViewBag.assignee"> 
+                        
+                        
+                              <option>Select Assignee</option>
+                           </select>
+                           <span asp-validation-for="AssigneeId" class="text-danger"></span>
+                       
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" id="description"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Update" class="btn mr-2" id="submit"/>
+                <a asp-action="OffBoardDashboard" class="btn" id="submit" >Return to Dashboard</a>
+            </div>
+             </form>
+         
+          
+         
+       
+    </div>
+     <div class="col-md-4"></div>
+</div>
+</body>
+</html>
+
+

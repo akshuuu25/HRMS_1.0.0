@@ -1,0 +1,91 @@
+﻿@model HRMS.Models.Login
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+    <head>
+        <title> User Login</title>
+         <link rel="stylesheet" href="~/css/login.css" />
+         <link rel="stylesheet" href="~/css/register.css" />
+         <link rel="stylesheet" href="~/css/StyleSheet.css" />
+
+    
+         
+    </head>
+    <body>
+    
+         <form  asp-controller="Account" asp-action="LogIn" method="post" style="margin-top:30px;"> 
+       
+             <div class="row mb-2">
+                 <div class="col-sm-4">
+
+                 </div>
+                 <div class="col-sm-4">
+                     <div class="form-group">
+
+                         <label asp-for="Email" class="control-label">Email<span style="color:red;">*</span></label>
+                     <input asp-for="Email" class="form-control" id="email" placeholder="Enter Your Email"/>
+                     <span asp-validation-for="Email" class="text-danger"></span>
+
+                     </div>
+
+                     <div class="form-group">
+                     <label asp-for="Password" class="control-label">Password<span style="color:red;">*</span></label>
+                     <input asp-for="Password" class="form-control" id="password"/>
+                     <span asp-validation-for="Password" class="text-danger"></span>
+                     </div>
+
+                     <div class="form-group">
+
+                         <input type="checkbox" asp-for="RememberMe" class="form-check-input" id="remember"/>
+                         
+                     <label class="form-check-label" asp-for="RememberMe">Remember Me?</label>
+
+                     </div>
+
+
+                 </div>
+              
+                 <div class="col-sm-4">
+
+                 </div>
+             </div>
+       <div class="row mb-2">
+          <div class="col-sm-4">
+           
+          </div>
+             
+          <div class="col-sm-4" id="btn">
+              <div class="row">
+               
+            
+              <button class="form-control btn mr-2" asp-area=""  asp-action="LogIn" asp-controller="Account" id="btn-login" >Login</button>
+              <a asp-action="ForgotPassword" class="btn" id="btn-login">Forgot Password?</a>
+
+             
+       
+
+          </div>
+           
+         </div>
+      
+
+
+          
+           <div class="col-sm-4">
+
+         </div>
+            
+       
+       </div>
+
+           
+
+       </form>
+    </body>
+</html>
+

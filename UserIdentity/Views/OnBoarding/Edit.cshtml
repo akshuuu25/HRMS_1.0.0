@@ -1,0 +1,118 @@
+﻿
+@model HRMS.Models.OnBoardingRequest
+
+@{
+  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+
+    <head>
+         <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+  <body>
+
+
+
+<div class="row">
+     <div class="col-md-4"></div>
+    <div class="col-md-4">
+     
+       <form asp-action="Edit" method="post">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmpId" />
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control"/>
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control"/>
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+
+            
+             <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control"/>
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+
+            
+             <div class="form-group">
+                <label asp-for="Doj" class="control-label"></label>
+                <input asp-for="Doj" class="form-control"/>
+                <span asp-validation-for="Doj" class="text-danger"></span>
+            </div>
+
+            
+             <div class="form-group">
+                <label asp-for="Designation" class="control-label"></label>
+                <input asp-for="Designation" class="form-control"/>
+                <span asp-validation-for="Designation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BUnitId" class="control-label">Select BusinessUnit</label>
+                          <select asp-for="BUnitId" class="form-control" asp-items="@ViewBag.businessUnit"> 
+                              <option>Select BusinessUnit</option>
+                           </select>
+                          <span asp-validation-for="BUnitId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                 <label asp-for="DeptID" class="control-label">Select Department</label>
+                          
+                        
+                        <select asp-for="DeptID" class="form-control" asp-items="@ViewBag.department"> 
+                              <option>Select Department</option>
+                           </select>
+                           <span asp-validation-for="DeptID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SDeptID" class="control-label">Select Sub-Department</label>
+                         
+                       
+                          <select asp-for="SDeptID" class="form-control" asp-items="@ViewBag.subdept"> 
+                        
+                        
+                              <option>Select Subdept</option>
+                           </select>
+                           <span asp-validation-for="SDeptID" class="text-danger"></span>
+                       
+            </div>
+
+            
+            <div class="form-group">
+                 <label asp-for="ReportID" class="control-label">Select Resource Manager</label>
+                          
+                      
+                        <select asp-for="ReportID" class="form-control" asp-items="@ViewBag.rm"> 
+                              <option>Select Resource Manager</option>
+                           </select>
+                           <span asp-validation-for="ReportID" class="text-danger"></span>
+            </div>
+
+            
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Save" class="btn mr-2" id="submit"/>
+                <a asp-action="Dashboard" class="btn" id="submit">Return to Dashboard</a>
+            </div>
+             </form>
+         
+          
+         
+       
+    </div>
+     <div class="col-md-4"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿@model HRMS.Models.BusinessUnit
+@{
+   
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+    <head>
+        <title>Adminbunit</title>
+       <link rel="stylesheet" href="~/css/StyleSheet.css" />
+
+         
+    </head>
+    <body>
+        
+        
+        <div class="row">
+            <div class="col-sm-4"></div>
+
+
+            <div class="col-sm-4">
+                <form asp-controller="Admin" asp-action="Adminbunit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                      <div class="form-group">
+                             
+                          <label asp-for="BUnitName" class="control-label">BusinessUnit Name<span style="color:red;">*</span></label>
+                         
+                          <input asp-for="BUnitName" class="form-control" id="bunitname"/>
+                          <span asp-validation-for="BUnitName" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                             
+                           <label asp-for="Status" class="control-label">Select Status<span style="color:red;">*</span></label><br />
+                          
+
+                          @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                            {
+                               new SelectListItem() { Text = "Active", Value = "True"},
+                               new SelectListItem() { Text = "InActive", Value = "False" }
+                           }, "Select Status", new { @id = "status", @class="form-control" })
+                          <span asp-validation-for="Status" class="text-danger"></span><br />
+
+                          <div class="form-group  d-flex justify-content-center">
+                                 <input type="submit" id="submit" class="btn mr-2" value="Save"/>
+                                   <a asp-action="BunitDashboard" asp-controller="BunitDash" class="btn" id="submit">Return To Dashboard</a>
+
+                             </div>
+                         
+                       </div>
+
+                         </form>    
+                         
+                             
+                           
+                             <div class="col-sm-4">
+
+                             </div>
+
+                        
+                        
+                     
+           
+            </div>
+
+            <div class="col-sm-4"></div>
+
+        </div>
+      </body>
+</html>

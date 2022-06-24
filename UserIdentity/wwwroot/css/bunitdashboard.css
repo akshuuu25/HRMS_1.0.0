@@ -1,0 +1,11 @@
+﻿
+#edit
+{
+    margin-left:100px;
+}
+#tblbunit{
+    width:fit-content;
+}
+#update , #cancel{
+display:none;
+}

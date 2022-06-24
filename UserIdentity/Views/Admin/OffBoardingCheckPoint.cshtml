@@ -1,0 +1,83 @@
+﻿@model HRMS.Models.OffBoardingCheckPoint
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <script src="~/Scripts//onboarding.js" asp-append-version="true"></script>
+        <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    </head>
+   <body>
+
+
+
+
+           
+<div class="row">
+      <div class="col-md-4">
+
+    </div>
+
+    <div class="col-md-4">
+        <form asp-action="OffBoardingCheckPoint" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="offCheckPointName" class="control-label">Checkckpoint Name<span style="color:red;">*</span></label>
+                <input asp-for="offCheckPointName" class="form-control" id="CheckPointName" />
+                <span asp-validation-for="offCheckPointName" class="text-danger"></span>
+            </div>
+           <div class="form-group"> 
+                           <label asp-for="BUnitId" class="control-label">Select BusinessUnit<span style="color:red;">*</span></label>
+                           
+                         @Html.HiddenFor(m => m.BUnitId, new { @id = "bunitId" })
+                            @Html.DropDownListFor(x => x.BUnitId, (SelectList)ViewBag.businessUnit, "Select BusinessUnit", new { @id = "bunit" , @class="form-control"})
+                          
+                   
+                           <span asp-validation-for="BUnitId" class="text-danger"></span>
+          </div>
+                       
+           <div class="form-group">
+                           <label asp-for="DeptID" class="control-label">Select Department<span style="color:red;">*</span></label>
+                            
+                           @Html.HiddenFor(m => m.DeptID, new { @id = "deptId" })
+                           @Html.DropDownListFor(x => x.DeptID, (SelectList)ViewBag.department, "Select Department", new { @id = "dept" , @class="form-control"})
+                          
+                      
+                        <span asp-validation-for="DeptID" class="text-danger"></span>
+                       
+            </div>
+
+             <div class="form-group">
+                           <label asp-for="AssigneeId" class="control-label">Select Assignee<span style="color:red;">*</span></label>
+                          @Html.HiddenFor(m => m.AssigneeId, new { @id = "assigneeId" })
+                         @Html.DropDownListFor(x => x.AssigneeId, (SelectList)ViewBag.assignee, "Select Assignee", new { @id = "assignee" , @class="form-control"})
+                
+                          <span asp-validation-for="AssigneeId" class="text-danger"></span>
+                       
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description<span style="color:red;">*</span></label>
+                <input asp-for="Description" class="form-control" id="description"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Save" class="btn mr-2" id="offboardChecksubmit" />
+                <a class="btn" asp-action="OffBoardDashboard" asp-controller="OffBoarding" id="offboardChecksubmit">Return To Dashboard</a>
+            
+            </div>
+        </form>
+    </div>
+      <div class="col-md-4">
+
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

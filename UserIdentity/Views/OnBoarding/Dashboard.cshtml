@@ -1,0 +1,149 @@
+﻿
+
+
+@model IEnumerable<HRMS.Models.OnBoardingRequest>
+@{
+    ViewData["Title"] = "Dashboard";
+  //  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+    <head>
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="~/Scripts/onboarding.js" asp-append-version="true"></script>
+       <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+    <body>
+
+
+<div class="mt-4">
+ <div class="d-flex justify-content-start">
+ <form asp-controller="OnBoarding" asp-action="Dashboard" method="get" class="mr-2" >
+       <div class="input-group">
+             <input type="text" name="SearchString" class="form-control" placeholder="Search from here." aria-label="Recipient's username" aria-describedby="button-addon2">
+             <input class="btn mr-2" type="submit" value="Search" id="button-addon2" />
+              <label class="pt-2">Total Record :</label> <input class="form-control" id="totalrow" />
+          </div>
+ </form>
+    <a class="btn" asp-action="Admin" asp-controller="Admin" id="button-addon2">Return To AdminDashboard</a>
+   
+           
+      </div>
+ 
+   
+  
+ 
+  
+
+ </div>
+<table class="table" id="secondtable">
+      <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Doj)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayName("BUnit")
+            </th>
+            <th>
+                @Html.DisplayName("Dept")
+            </th>
+            <th>
+                @Html.DisplayName("SubDept")
+            </th>
+            <th>
+                @Html.DisplayName("Reporting")
+            </th>
+           
+            <th>
+                
+            </th>
+            <th>
+                 <a class=" btn btn-secondary" asp-action="OnBoardingRequest" asp-controller="OnBoarding">
+                      <i class="fa fa-plus"></i>
+                 </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+               <td>
+               
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+               <td>
+               
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+               <td>
+               
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+               <td>
+               
+                @Html.DisplayFor(modelItem => item.Doj)
+            </td>
+               <td>
+               
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUnitName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubDeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportManagerName)
+            </td>
+          
+            <td>
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.EmpId">
+                    <i class="fa fa-pencil"></i>
+                </a> 
+            </td>
+            <td>
+                <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@item.EmpId">
+                    <i class="fa fa-trash"></i>
+                </a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+
+         
+      </table>
+</body>
+</html>

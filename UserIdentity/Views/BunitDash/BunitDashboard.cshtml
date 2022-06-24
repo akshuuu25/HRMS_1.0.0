@@ -1,0 +1,78 @@
+﻿
+@model IEnumerable<HRMS.Models.BusinessUnit>
+
+<html>
+    <head>
+       
+        <title>BunitDash</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+    </head>
+    <body>
+        <div class="mt-4">
+          
+             <div class="d-flex justify-content-start">
+      <form asp-controller="BunitDash" asp-action="BunitDashboard" method="get" >
+        <div class="input-group">
+             <input type="text" name="SearchString" class="form-control" placeholder="Search from here." aria-label="Recipient's username" aria-describedby="button-addon2">
+             <input class="btn mr-2" type="submit" value="Search" id="button-addon2" />
+          </div>
+        </form>
+         <a class="btn" id="button-addon2" asp-action="Admin" asp-controller="Admin">Return To AdminDashboard</a>
+        
+         </div>
+         
+        
+        </div>
+        <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BUnitName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th style="align-content:center;">
+                <a asp-action="Adminbunit" asp-controller="Admin" class="btn btn-secondary" style="margin-left:19px;">
+                     <i class="fa fa-plus"></i>
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BUnitName)
+            </td>
+            <td>
+               
+                @if(item.Status==true)
+                {
+                            @Html.DisplayName("Active")
+                        }
+                        else
+                        {
+                            @Html.DisplayName("InActive")
+                        }
+                    </td>
+            <td>
+                  <a class="btn btn-secondary" asp-action="AddOrEdit" asp-route-id="@item.BUnitId">
+                    <i class="fa fa-pencil"></i>
+                </a> 
+                <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@item.BUnitId">
+                    <i class="fa fa-trash"></i>
+                </a>
+
+            </td>
+        </tr>
+
+}
+    </tbody>
+
+</table>
+
+
+    </body>
+</html>

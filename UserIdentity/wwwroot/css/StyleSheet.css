@@ -1,0 +1,14 @@
+﻿body {
+
+}
+
+#submit, #btn-login, #btnSubmit, #offboardChecksubmit, #onboardChecksubmit, #button-addon2, #onboardsubmit {
+    background-color: hotpink;
+    color: white;
+}
+
+    #submit:hover, #btn-login:hover, #btnSubmit:hover, #offboardChecksubmit:hover, #onboardChecksubmit:hover,
+    #button-addon2:hover, #onboardsubmit:hover 
+    {
+        background-color: #6c757d;
+    }

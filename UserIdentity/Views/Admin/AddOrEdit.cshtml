@@ -1,0 +1,59 @@
+﻿@model HRMS.Models.CreateRole
+
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@*<div class="d-flex justify-content-end">
+      <a asp-action="Admin" class="btn btn-primary">Return to Dashboard</a>
+</div>*@
+<html>
+    <head>
+          <link rel="stylesheet" href="~/css/StyleSheet.css" />
+
+    </head>
+    <body>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="AddOrEdit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label">Select Users</label>
+                          <select asp-for="Username"  class="form-control" asp-items="@ViewBag.users"> 
+                              <option>Select Users</option>
+                           </select>
+                          <span asp-validation-for="Username" class="text-danger"></span>
+              @*  <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span*@
+            </div>
+            <div class="form-group">
+                 <label asp-for="Rolename" class="control-label">Select Role</label>
+                          <select asp-for="Rolename"  class="form-control" asp-items="@ViewBag.roles"> 
+                              <option>Select Role</option>
+                           </select>
+                          <span asp-validation-for="Rolename" class="text-danger"></span>
+                @*<label asp-for="Rolename" class="control-label"></label>
+                <input asp-for="Rolename" class="form-control" />
+                <span asp-validation-for="Rolename" class="text-danger"></span>*@
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" id="submit" value="Update" class="btn mr-2"/>
+                 <a asp-action="Admin" class="btn" id="submit">Return to Dashboard</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+
+
+</div>
+</body>
+</html>

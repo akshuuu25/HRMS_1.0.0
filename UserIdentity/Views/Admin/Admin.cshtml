@@ -1,0 +1,128 @@
+﻿
+@using HRMS.Models
+@model IEnumerable<CreateRole>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> userManager;
+
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/admin.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+    </head> 
+    <body>
+   <div>
+    <div class="row flex-nowrap">
+        
+                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                            <a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none" id="text-admin">
+                                <span class="fs-5 d-none d-sm-inline">Admin Panel</span>
+                            </a>
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                                <li class="nav-item">
+
+                                    <a asp-action="BunitDashboard"  asp-controller="BunitDash" id="bghover" class="nav-link align-middle px-0">
+                                        Business Unit
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a asp-action="DeptDashboard"  asp-controller="DeptDash" id="bghover" class="nav-link px-0 align-middle">
+                                        Department </a>
+
+                                </li>
+                                <li>
+                                    <a asp-controller="OnBoarding" asp-action="Dashboard" id="bghover" class="nav-link px-0 align-middle">
+                                        OnBoardingRequest </a>
+
+                                </li>
+                                <li>
+                                    <a asp-action="OnBoardDashboard"  asp-controller="OnBoarding" id="bghover" class="nav-link px-0 align-middle">
+                                        OnBoardCheckPoint </a>
+
+                                </li>
+                                <li>
+                                    <a asp-action="OffBoardDashboard"  asp-controller="OffBoarding" id="bghover" class="nav-link px-0 align-middle">
+                                        OffBoardCheckPoint </a>
+
+                                </li>
+
+
+                            </ul>
+                            <hr>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-sm-10">
+                        <table class="table">
+                            <thead>
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Username)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Rolename)
+                                    </th>
+                                    <th style="align-content:center;">
+                                        <a class="btn btn-secondary" asp-action="CreateRole" asp-controller="Account" style="margin-left:19px;">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+
+                                    </th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Username)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Rolename)
+
+
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-secondary" asp-action="AddOrEdit" asp-route-id="@item.Id">
+                                                <i class="fa fa-pencil"></i>
+                                            </a> 
+                                            <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@item.Id">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+             
+
+        
+</div>
+</div>
+ </body>
+</html>

@@ -1,0 +1,121 @@
+﻿@model HRMS.Models.OnBoardingRequest
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+       <title>OnBoardingRequest</title> 
+       
+        <link rel="stylesheet" href="~/css/onboarding.css"/>
+       <script src="~/Scripts/onboarding.js" asp-append-version=true></script>
+        <link rel="stylesheet" href="~/css/StyleSheet.css"/>
+
+    </head>
+    <body>
+        
+        <div>
+            <form asp-action="OnBoardingRequest" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                             
+                          <label asp-for="Firstname" class="control-label">First Name<span style="color:red;">*</span></label>
+                          <input asp-for="Firstname" class="form-control" id="firstname"/>
+                          <span asp-validation-for="Firstname" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            
+                          <label asp-for="Lastname" class="control-label">Last Name<span style="color:red;">*</span></label>
+                          <input asp-for="Lastname" class="form-control" id="lastname"/>
+                          <span asp-validation-for="Lastname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                          <label asp-for="Email" class="control-label">Email<span style="color:red;">*</span></label>
+                          <input asp-for="Email" class="form-control" id="email"/>
+                          <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                         <div class="form-group">
+                          <label asp-for="Mobile" class="control-label">Mobile<span style="color:red;">*</span></label>
+                          <input asp-for="Mobile" class="form-control" id="mobile"/>
+                          <span asp-validation-for="Mobile" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                          <label asp-for="Doj" class="control-label">Date of Joining<span style="color:red;">*</span></label>
+                          <input asp-for="Doj" class="datepicker form-control" id="doj" min="2021-01-06"/>
+                          <span asp-validation-for="Doj" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                         <div class="form-group">
+                          <label asp-for="Designation" class="control-label">Designation<span style="color:red;">*</span></label>
+                          <input asp-for="Designation" class="form-control" id="designation"/>
+                          <span asp-validation-for="Designation" class="text-danger"></span>
+                       
+                         </div>
+                        
+                        <div class="form-group"> 
+                           <label asp-for="BUnitId" class="control-label">Select BusinessUnit<span style="color:red;">*</span></label>
+                           @Html.HiddenFor(m => m.BUnitId, new { @id = "bunitId" })
+                           @Html.DropDownListFor(x => x.BUnitId, (SelectList)ViewBag.businessUnit, "Select BusinessUnit", new { @id = "bunit" , @class="form-control"})
+                           
+                           <span asp-validation-for="BUnitId" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="form-group">
+                           <label asp-for="DeptID" class="control-label">Select Department<span style="color:red;">*</span></label>
+                           @Html.HiddenFor(m => m.DeptID, new { @id = "deptId" })
+                            @Html.DropDownListFor(x => x.DeptID, (SelectList)ViewBag.department, "Select Department", new { @id = "dept" , @class="form-control"})
+                          
+                          
+                           <span asp-validation-for="DeptID" class="text-danger"></span>
+                       
+                        </div>
+
+                        <div class="form-group">
+                           <label asp-for="SDeptID" class="control-label">Select SubDepartment<span style="color:red;">*</span></label>
+                        @Html.HiddenFor(m => m.SDeptID, new { @id = "sdeptId" })
+                         @Html.DropDownListFor(x => x.SDeptID,Enumerable.Empty<SelectListItem>(),"Select SubDepartment", new { @id = "sdept" , @class="form-control"})
+                          
+                          
+                           <span asp-validation-for="SDeptID" class="text-danger"></span>
+                       
+                        </div>
+                        <div class="form-group">
+                           <label asp-for="ReportID" class="control-label">Select ReportingManager<span style="color:red;">*</span></label>
+                           @Html.HiddenFor(m => m.ReportID, new { @id = "rmId" })
+                            @Html.DropDownListFor(x => x.ReportID, (SelectList)ViewBag.reportingmanager, "Select ReportingManager", new { @id = "rm" , @class="form-control"})
+                          
+                          
+                           <span asp-validation-for="ReportID" class="text-danger"></span>
+                       
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4" id="btn">
+                        <button  class="btn mr-2" value="submit" type="submit" id="onboardsubmit" >Submit</button>
+                         <a class="btn" asp-action="Dashboard" asp-controller="OnBoarding" id="onboardsubmit">Return to Dashboard</a>
+       
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+            </form>
+        </div>
+
+    </body>
+</html>
+
+

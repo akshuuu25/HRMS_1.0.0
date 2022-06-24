@@ -1,0 +1,52 @@
+﻿@model HRMS.Models.BusinessUnit
+
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*<div class="d-flex justify-content-end">
+     
+</div>*@
+<html>
+    <head>
+         <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    </head>
+    <body>
+        <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="AddOrEdit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="BUnitId" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="BUnitName" class="control-label"></label>
+                <input asp-for="BUnitName" class="form-control" />
+                <span asp-validation-for="BUnitName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                </label>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Update" class="btn mr-2" id="submit"/>
+                 <a asp-action="BunitDashboard" class="btn" id="submit">Return to Dashboard</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+
+
+</div>
+</body>
+   
+</html>
+
+ 
+
+
