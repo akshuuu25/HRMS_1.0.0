@@ -194,24 +194,34 @@
 
     });
 
-    jQuery("#copy").click(function () {
+    //jQuery("#button-addon2").click(function () {
 
 
 
-       //  onBoardCheckpoint.IsRequired = jQuery("#required").val();
+    //    //  onBoardCheckpoint.IsRequired = jQuery("#required").val();
+    //    var selectCheckbox = jQuery(".check").find('input[type="checkbox"]:checked').val();
 
 
        
-            jQuery.ajax({
-                type: "Post",
-                url: "/OffBoarding/Copy",
+    //        jQuery.ajax({
+    //            type: "Post",
+    //            url: "/OffBoarding/Copy",
               
-                success: function () {
-                    alert("Data Added!");
-                }
-            });
+    //            success: function () {
+    //                alert("Data Added!");
+    //            }
+    //        });
         
 
-    });
+    //});
+
+    //jQuery(".check").click(function () {
+    //    if (jQuery(this)[0].checked) {
+            
+    //    }
+    //    else {
+    //        alert("Please check the checkbox first!!!");
+    //    }
+    //});
 
 })

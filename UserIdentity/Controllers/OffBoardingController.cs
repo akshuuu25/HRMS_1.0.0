@@ -173,20 +173,23 @@ namespace HRMS.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Copy(int[] id)
         {
+                
+               string strtoint = string.Empty;
 
-            string strtoint = string.Empty;
-               if (id != null)
-                {
-                    strtoint = id.Select(a => a.ToString()).Aggregate((i, j) => i + "," + j);
-                
-                
-                }
+            if (id.Any())
+            {
+                strtoint = id.Select(a => a.ToString()).Aggregate((i, j) => i + "," + j);
+
+
+
+
+
                 SqlConnection con = new SqlConnection(@"Server = 192.168.5.241; Initial Catalog = HumanResourseManagement_Trainee; user id = sa; password = BDev2019$; MultipleActiveResultSets = True");
                 SqlCommand cmd = new SqlCommand("Sp_CopyToOffBoarding", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-           
+
                 cmd.Parameters.AddWithValue("strtoint", strtoint);
-         
+
                 con.Open();
                 int k = cmd.ExecuteNonQuery();
                 if (k != 0)
@@ -194,9 +197,15 @@ namespace HRMS.Controllers
 
                 }
                 _notyfService.Success("Copy data successfully");
-                 con.Close();
-            
-           
+                con.Close();
+
+            }
+            else
+            {
+                _notyfService.Error("Tick the checkbox and select row from onboarddashboard!!");
+            }
+
+
 
             return RedirectToAction("OffBoardDashboard");
            

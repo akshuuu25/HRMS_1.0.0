@@ -28,7 +28,7 @@
  </form>
         
    </div>
-<form asp-controller="OffBoarding" asp-action="Copy" method="post">
+<form  asp-controller="OffBoarding" asp-action="Copy"  method="post">
   
 <table class="table">
     <thead>
@@ -63,7 +63,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <input id="@item.CheckPointId" type="checkbox" name="id[]" value="@item.CheckPointId"/>
+                <input id="@item.CheckPointId" type="checkbox"  name="id[]" value="@item.CheckPointId" />
 
 
             
